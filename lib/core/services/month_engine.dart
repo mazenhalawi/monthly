@@ -1,5 +1,5 @@
-import 'package:mobile_recruitment_test/features/month_calendar/month_engine_data.dart';
-import 'package:mobile_recruitment_test/features/month_calendar/time_utils.dart';
+import 'package:mobile_recruitment_test/features/month_calendar/models/month_engine_data.dart';
+import 'package:mobile_recruitment_test/core/utils/time_utils.dart';
 
 /// This class builds a complete calendar month representation with 42 cells
 /// (6 rows × 7 columns), including days from the previous and next months
@@ -29,6 +29,7 @@ class MonthEngine {
     final date = DateTime(year, month, day);
     final isToday = TimeUtils.isToday(date);
 
+    // creates "day" cell to insert into output map
     final cell = {
       _column: MonthCellInfo(
         day: day,
@@ -42,6 +43,7 @@ class MonthEngine {
       ),
     };
 
+    // inserting the "day" cell into the correct row in the output map
     if (output[_row] == null) {
       output.addAll({_row: cell});
     } else {
@@ -101,8 +103,10 @@ class MonthEngine {
       year: date.year,
       month: date.month,
     );
+
     for (var d = 0; d < daysInMonth; d++) {
       final day = d + 1;
+
       _feedOutput(
         day: day,
         month: date.month,
@@ -110,6 +114,7 @@ class MonthEngine {
         isFromThisScope: true,
         output: month,
       );
+
       _moveToNextPositon();
     }
   }

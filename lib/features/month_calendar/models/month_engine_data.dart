@@ -1,4 +1,6 @@
+// ignore_for_file: unintended_html_in_doc_comment
 /// Constants for the month calendar grid dimensions.
+
 class KMonthEngine {
   KMonthEngine._();
 
@@ -8,6 +10,8 @@ class KMonthEngine {
 }
 
 /// Type definition for the calendar grid structure.
+///
+/// typedef CellInfoMapper = Map<WeekRow, Map<DayColumn, MonthCellInfo>>;
 ///
 /// A nested map where:
 /// - Outer map key: row index (0-5) - Calendar Rows representing weeks

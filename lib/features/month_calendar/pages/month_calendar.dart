@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_recruitment_test/core/utils/colors.dart';
-import 'package:mobile_recruitment_test/features/month_calendar/month_engine.dart';
-import 'package:mobile_recruitment_test/features/month_calendar/month_engine_data.dart';
+import 'package:mobile_recruitment_test/core/services/month_engine.dart';
+import 'package:mobile_recruitment_test/features/month_calendar/models/month_engine_data.dart';
 import 'package:mobile_recruitment_test/core/widgets/text.dart';
 import 'package:mobile_recruitment_test/core/utils/translations.dart';
 
