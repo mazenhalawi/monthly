@@ -55,11 +55,11 @@ extension MonthEventPatterns on MonthEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Started value)?  started,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( MonthEventGetMonth value)?  getMonth,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _Started() when started != null:
-return started(_that);case _:
+case MonthEventGetMonth() when getMonth != null:
+return getMonth(_that);case _:
   return orElse();
 
 }
@@ -77,11 +77,11 @@ return started(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Started value)  started,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( MonthEventGetMonth value)  getMonth,}){
 final _that = this;
 switch (_that) {
-case _Started():
-return started(_that);case _:
+case MonthEventGetMonth():
+return getMonth(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -98,11 +98,11 @@ return started(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Started value)?  started,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( MonthEventGetMonth value)?  getMonth,}){
 final _that = this;
 switch (_that) {
-case _Started() when started != null:
-return started(_that);case _:
+case MonthEventGetMonth() when getMonth != null:
+return getMonth(_that);case _:
   return null;
 
 }
@@ -119,10 +119,10 @@ return started(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  getMonth,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _Started() when started != null:
-return started();case _:
+case MonthEventGetMonth() when getMonth != null:
+return getMonth();case _:
   return orElse();
 
 }
@@ -140,10 +140,10 @@ return started();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  getMonth,}) {final _that = this;
 switch (_that) {
-case _Started():
-return started();case _:
+case MonthEventGetMonth():
+return getMonth();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -160,10 +160,10 @@ return started();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  getMonth,}) {final _that = this;
 switch (_that) {
-case _Started() when started != null:
-return started();case _:
+case MonthEventGetMonth() when getMonth != null:
+return getMonth();case _:
   return null;
 
 }
@@ -174,8 +174,8 @@ return started();case _:
 /// @nodoc
 
 
-class _Started implements MonthEvent {
-  const _Started();
+class MonthEventGetMonth implements MonthEvent {
+  const MonthEventGetMonth();
   
 
 
@@ -185,7 +185,7 @@ class _Started implements MonthEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Started);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MonthEventGetMonth);
 }
 
 
@@ -194,7 +194,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'MonthEvent.started()';
+  return 'MonthEvent.getMonth()';
 }
 
 
@@ -206,30 +206,71 @@ String toString() {
 /// @nodoc
 mixin _$MonthState {
 
-
+ MonthData get data; bool get isListenerState;
+/// Create a copy of MonthState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$MonthStateCopyWith<MonthState> get copyWith => _$MonthStateCopyWithImpl<MonthState>(this as MonthState, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MonthState);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MonthState&&(identical(other.data, data) || other.data == data)&&(identical(other.isListenerState, isListenerState) || other.isListenerState == isListenerState));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,data,isListenerState);
 
 @override
 String toString() {
-  return 'MonthState()';
+  return 'MonthState(data: $data, isListenerState: $isListenerState)';
 }
 
 
 }
 
 /// @nodoc
-class $MonthStateCopyWith<$Res>  {
-$MonthStateCopyWith(MonthState _, $Res Function(MonthState) __);
+abstract mixin class $MonthStateCopyWith<$Res>  {
+  factory $MonthStateCopyWith(MonthState value, $Res Function(MonthState) _then) = _$MonthStateCopyWithImpl;
+@useResult
+$Res call({
+ MonthData data, bool isListenerState
+});
+
+
+$MonthDataCopyWith<$Res> get data;
+
+}
+/// @nodoc
+class _$MonthStateCopyWithImpl<$Res>
+    implements $MonthStateCopyWith<$Res> {
+  _$MonthStateCopyWithImpl(this._self, this._then);
+
+  final MonthState _self;
+  final $Res Function(MonthState) _then;
+
+/// Create a copy of MonthState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? data = null,Object? isListenerState = null,}) {
+  return _then(_self.copyWith(
+data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as MonthData,isListenerState: null == isListenerState ? _self.isListenerState : isListenerState // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+/// Create a copy of MonthState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MonthDataCopyWith<$Res> get data {
+  
+  return $MonthDataCopyWith<$Res>(_self.data, (value) {
+    return _then(_self.copyWith(data: value));
+  });
+}
 }
 
 
@@ -247,11 +288,15 @@ extension MonthStatePatterns on MonthState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( MonthStateInitial value)?  initial,TResult Function( MonthStateLoading value)?  loading,TResult Function( MonthStateLoadFailure value)?  loadFailure,TResult Function( MonthStateLoadSuccess value)?  loadSuccess,TResult Function( MonthStateDisplayAlert value)?  displayAlert,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _Initial() when initial != null:
-return initial(_that);case _:
+case MonthStateInitial() when initial != null:
+return initial(_that);case MonthStateLoading() when loading != null:
+return loading(_that);case MonthStateLoadFailure() when loadFailure != null:
+return loadFailure(_that);case MonthStateLoadSuccess() when loadSuccess != null:
+return loadSuccess(_that);case MonthStateDisplayAlert() when displayAlert != null:
+return displayAlert(_that);case _:
   return orElse();
 
 }
@@ -269,11 +314,15 @@ return initial(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( MonthStateInitial value)  initial,required TResult Function( MonthStateLoading value)  loading,required TResult Function( MonthStateLoadFailure value)  loadFailure,required TResult Function( MonthStateLoadSuccess value)  loadSuccess,required TResult Function( MonthStateDisplayAlert value)  displayAlert,}){
 final _that = this;
 switch (_that) {
-case _Initial():
-return initial(_that);case _:
+case MonthStateInitial():
+return initial(_that);case MonthStateLoading():
+return loading(_that);case MonthStateLoadFailure():
+return loadFailure(_that);case MonthStateLoadSuccess():
+return loadSuccess(_that);case MonthStateDisplayAlert():
+return displayAlert(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -290,11 +339,15 @@ return initial(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( MonthStateInitial value)?  initial,TResult? Function( MonthStateLoading value)?  loading,TResult? Function( MonthStateLoadFailure value)?  loadFailure,TResult? Function( MonthStateLoadSuccess value)?  loadSuccess,TResult? Function( MonthStateDisplayAlert value)?  displayAlert,}){
 final _that = this;
 switch (_that) {
-case _Initial() when initial != null:
-return initial(_that);case _:
+case MonthStateInitial() when initial != null:
+return initial(_that);case MonthStateLoading() when loading != null:
+return loading(_that);case MonthStateLoadFailure() when loadFailure != null:
+return loadFailure(_that);case MonthStateLoadSuccess() when loadSuccess != null:
+return loadSuccess(_that);case MonthStateDisplayAlert() when displayAlert != null:
+return displayAlert(_that);case _:
   return null;
 
 }
@@ -311,10 +364,14 @@ return initial(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( MonthData data,  bool isListenerState)?  initial,TResult Function( MonthData data,  bool isListenerState)?  loading,TResult Function( Failure failure,  MonthEvent retryEvent,  MonthData data,  bool isListenerState)?  loadFailure,TResult Function( MonthData data,  bool isListenerState)?  loadSuccess,TResult Function( String title,  String message,  MonthData data,  bool shouldPopOut,  bool isListenerState)?  displayAlert,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _Initial() when initial != null:
-return initial();case _:
+case MonthStateInitial() when initial != null:
+return initial(_that.data,_that.isListenerState);case MonthStateLoading() when loading != null:
+return loading(_that.data,_that.isListenerState);case MonthStateLoadFailure() when loadFailure != null:
+return loadFailure(_that.failure,_that.retryEvent,_that.data,_that.isListenerState);case MonthStateLoadSuccess() when loadSuccess != null:
+return loadSuccess(_that.data,_that.isListenerState);case MonthStateDisplayAlert() when displayAlert != null:
+return displayAlert(_that.title,_that.message,_that.data,_that.shouldPopOut,_that.isListenerState);case _:
   return orElse();
 
 }
@@ -332,10 +389,14 @@ return initial();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( MonthData data,  bool isListenerState)  initial,required TResult Function( MonthData data,  bool isListenerState)  loading,required TResult Function( Failure failure,  MonthEvent retryEvent,  MonthData data,  bool isListenerState)  loadFailure,required TResult Function( MonthData data,  bool isListenerState)  loadSuccess,required TResult Function( String title,  String message,  MonthData data,  bool shouldPopOut,  bool isListenerState)  displayAlert,}) {final _that = this;
 switch (_that) {
-case _Initial():
-return initial();case _:
+case MonthStateInitial():
+return initial(_that.data,_that.isListenerState);case MonthStateLoading():
+return loading(_that.data,_that.isListenerState);case MonthStateLoadFailure():
+return loadFailure(_that.failure,_that.retryEvent,_that.data,_that.isListenerState);case MonthStateLoadSuccess():
+return loadSuccess(_that.data,_that.isListenerState);case MonthStateDisplayAlert():
+return displayAlert(_that.title,_that.message,_that.data,_that.shouldPopOut,_that.isListenerState);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -352,10 +413,14 @@ return initial();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( MonthData data,  bool isListenerState)?  initial,TResult? Function( MonthData data,  bool isListenerState)?  loading,TResult? Function( Failure failure,  MonthEvent retryEvent,  MonthData data,  bool isListenerState)?  loadFailure,TResult? Function( MonthData data,  bool isListenerState)?  loadSuccess,TResult? Function( String title,  String message,  MonthData data,  bool shouldPopOut,  bool isListenerState)?  displayAlert,}) {final _that = this;
 switch (_that) {
-case _Initial() when initial != null:
-return initial();case _:
+case MonthStateInitial() when initial != null:
+return initial(_that.data,_that.isListenerState);case MonthStateLoading() when loading != null:
+return loading(_that.data,_that.isListenerState);case MonthStateLoadFailure() when loadFailure != null:
+return loadFailure(_that.failure,_that.retryEvent,_that.data,_that.isListenerState);case MonthStateLoadSuccess() when loadSuccess != null:
+return loadSuccess(_that.data,_that.isListenerState);case MonthStateDisplayAlert() when displayAlert != null:
+return displayAlert(_that.title,_that.message,_that.data,_that.shouldPopOut,_that.isListenerState);case _:
   return null;
 
 }
@@ -366,33 +431,405 @@ return initial();case _:
 /// @nodoc
 
 
-class _Initial implements MonthState {
-  const _Initial();
+class MonthStateInitial implements MonthState {
+  const MonthStateInitial({required this.data, this.isListenerState = false});
   
 
+@override final  MonthData data;
+@override@JsonKey() final  bool isListenerState;
 
-
+/// Create a copy of MonthState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$MonthStateInitialCopyWith<MonthStateInitial> get copyWith => _$MonthStateInitialCopyWithImpl<MonthStateInitial>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MonthStateInitial&&(identical(other.data, data) || other.data == data)&&(identical(other.isListenerState, isListenerState) || other.isListenerState == isListenerState));
 }
 
 
 @override
-int get hashCode => runtimeType.hashCode;
+int get hashCode => Object.hash(runtimeType,data,isListenerState);
 
 @override
 String toString() {
-  return 'MonthState.initial()';
+  return 'MonthState.initial(data: $data, isListenerState: $isListenerState)';
 }
 
 
 }
 
+/// @nodoc
+abstract mixin class $MonthStateInitialCopyWith<$Res> implements $MonthStateCopyWith<$Res> {
+  factory $MonthStateInitialCopyWith(MonthStateInitial value, $Res Function(MonthStateInitial) _then) = _$MonthStateInitialCopyWithImpl;
+@override @useResult
+$Res call({
+ MonthData data, bool isListenerState
+});
 
 
+@override $MonthDataCopyWith<$Res> get data;
+
+}
+/// @nodoc
+class _$MonthStateInitialCopyWithImpl<$Res>
+    implements $MonthStateInitialCopyWith<$Res> {
+  _$MonthStateInitialCopyWithImpl(this._self, this._then);
+
+  final MonthStateInitial _self;
+  final $Res Function(MonthStateInitial) _then;
+
+/// Create a copy of MonthState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? data = null,Object? isListenerState = null,}) {
+  return _then(MonthStateInitial(
+data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as MonthData,isListenerState: null == isListenerState ? _self.isListenerState : isListenerState // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+/// Create a copy of MonthState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MonthDataCopyWith<$Res> get data {
+  
+  return $MonthDataCopyWith<$Res>(_self.data, (value) {
+    return _then(_self.copyWith(data: value));
+  });
+}
+}
+
+/// @nodoc
+
+
+class MonthStateLoading implements MonthState {
+  const MonthStateLoading({required this.data, this.isListenerState = false});
+  
+
+@override final  MonthData data;
+@override@JsonKey() final  bool isListenerState;
+
+/// Create a copy of MonthState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$MonthStateLoadingCopyWith<MonthStateLoading> get copyWith => _$MonthStateLoadingCopyWithImpl<MonthStateLoading>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MonthStateLoading&&(identical(other.data, data) || other.data == data)&&(identical(other.isListenerState, isListenerState) || other.isListenerState == isListenerState));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,data,isListenerState);
+
+@override
+String toString() {
+  return 'MonthState.loading(data: $data, isListenerState: $isListenerState)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $MonthStateLoadingCopyWith<$Res> implements $MonthStateCopyWith<$Res> {
+  factory $MonthStateLoadingCopyWith(MonthStateLoading value, $Res Function(MonthStateLoading) _then) = _$MonthStateLoadingCopyWithImpl;
+@override @useResult
+$Res call({
+ MonthData data, bool isListenerState
+});
+
+
+@override $MonthDataCopyWith<$Res> get data;
+
+}
+/// @nodoc
+class _$MonthStateLoadingCopyWithImpl<$Res>
+    implements $MonthStateLoadingCopyWith<$Res> {
+  _$MonthStateLoadingCopyWithImpl(this._self, this._then);
+
+  final MonthStateLoading _self;
+  final $Res Function(MonthStateLoading) _then;
+
+/// Create a copy of MonthState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? data = null,Object? isListenerState = null,}) {
+  return _then(MonthStateLoading(
+data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as MonthData,isListenerState: null == isListenerState ? _self.isListenerState : isListenerState // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+/// Create a copy of MonthState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MonthDataCopyWith<$Res> get data {
+  
+  return $MonthDataCopyWith<$Res>(_self.data, (value) {
+    return _then(_self.copyWith(data: value));
+  });
+}
+}
+
+/// @nodoc
+
+
+class MonthStateLoadFailure implements MonthState {
+  const MonthStateLoadFailure({required this.failure, required this.retryEvent, required this.data, this.isListenerState = false});
+  
+
+ final  Failure failure;
+ final  MonthEvent retryEvent;
+@override final  MonthData data;
+@override@JsonKey() final  bool isListenerState;
+
+/// Create a copy of MonthState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$MonthStateLoadFailureCopyWith<MonthStateLoadFailure> get copyWith => _$MonthStateLoadFailureCopyWithImpl<MonthStateLoadFailure>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MonthStateLoadFailure&&(identical(other.failure, failure) || other.failure == failure)&&(identical(other.retryEvent, retryEvent) || other.retryEvent == retryEvent)&&(identical(other.data, data) || other.data == data)&&(identical(other.isListenerState, isListenerState) || other.isListenerState == isListenerState));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,failure,retryEvent,data,isListenerState);
+
+@override
+String toString() {
+  return 'MonthState.loadFailure(failure: $failure, retryEvent: $retryEvent, data: $data, isListenerState: $isListenerState)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $MonthStateLoadFailureCopyWith<$Res> implements $MonthStateCopyWith<$Res> {
+  factory $MonthStateLoadFailureCopyWith(MonthStateLoadFailure value, $Res Function(MonthStateLoadFailure) _then) = _$MonthStateLoadFailureCopyWithImpl;
+@override @useResult
+$Res call({
+ Failure failure, MonthEvent retryEvent, MonthData data, bool isListenerState
+});
+
+
+$MonthEventCopyWith<$Res> get retryEvent;@override $MonthDataCopyWith<$Res> get data;
+
+}
+/// @nodoc
+class _$MonthStateLoadFailureCopyWithImpl<$Res>
+    implements $MonthStateLoadFailureCopyWith<$Res> {
+  _$MonthStateLoadFailureCopyWithImpl(this._self, this._then);
+
+  final MonthStateLoadFailure _self;
+  final $Res Function(MonthStateLoadFailure) _then;
+
+/// Create a copy of MonthState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? failure = null,Object? retryEvent = null,Object? data = null,Object? isListenerState = null,}) {
+  return _then(MonthStateLoadFailure(
+failure: null == failure ? _self.failure : failure // ignore: cast_nullable_to_non_nullable
+as Failure,retryEvent: null == retryEvent ? _self.retryEvent : retryEvent // ignore: cast_nullable_to_non_nullable
+as MonthEvent,data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as MonthData,isListenerState: null == isListenerState ? _self.isListenerState : isListenerState // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+/// Create a copy of MonthState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MonthEventCopyWith<$Res> get retryEvent {
+  
+  return $MonthEventCopyWith<$Res>(_self.retryEvent, (value) {
+    return _then(_self.copyWith(retryEvent: value));
+  });
+}/// Create a copy of MonthState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MonthDataCopyWith<$Res> get data {
+  
+  return $MonthDataCopyWith<$Res>(_self.data, (value) {
+    return _then(_self.copyWith(data: value));
+  });
+}
+}
+
+/// @nodoc
+
+
+class MonthStateLoadSuccess implements MonthState {
+  const MonthStateLoadSuccess({required this.data, this.isListenerState = false});
+  
+
+@override final  MonthData data;
+@override@JsonKey() final  bool isListenerState;
+
+/// Create a copy of MonthState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$MonthStateLoadSuccessCopyWith<MonthStateLoadSuccess> get copyWith => _$MonthStateLoadSuccessCopyWithImpl<MonthStateLoadSuccess>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MonthStateLoadSuccess&&(identical(other.data, data) || other.data == data)&&(identical(other.isListenerState, isListenerState) || other.isListenerState == isListenerState));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,data,isListenerState);
+
+@override
+String toString() {
+  return 'MonthState.loadSuccess(data: $data, isListenerState: $isListenerState)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $MonthStateLoadSuccessCopyWith<$Res> implements $MonthStateCopyWith<$Res> {
+  factory $MonthStateLoadSuccessCopyWith(MonthStateLoadSuccess value, $Res Function(MonthStateLoadSuccess) _then) = _$MonthStateLoadSuccessCopyWithImpl;
+@override @useResult
+$Res call({
+ MonthData data, bool isListenerState
+});
+
+
+@override $MonthDataCopyWith<$Res> get data;
+
+}
+/// @nodoc
+class _$MonthStateLoadSuccessCopyWithImpl<$Res>
+    implements $MonthStateLoadSuccessCopyWith<$Res> {
+  _$MonthStateLoadSuccessCopyWithImpl(this._self, this._then);
+
+  final MonthStateLoadSuccess _self;
+  final $Res Function(MonthStateLoadSuccess) _then;
+
+/// Create a copy of MonthState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? data = null,Object? isListenerState = null,}) {
+  return _then(MonthStateLoadSuccess(
+data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as MonthData,isListenerState: null == isListenerState ? _self.isListenerState : isListenerState // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+/// Create a copy of MonthState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MonthDataCopyWith<$Res> get data {
+  
+  return $MonthDataCopyWith<$Res>(_self.data, (value) {
+    return _then(_self.copyWith(data: value));
+  });
+}
+}
+
+/// @nodoc
+
+
+class MonthStateDisplayAlert implements MonthState {
+  const MonthStateDisplayAlert({required this.title, required this.message, required this.data, this.shouldPopOut = false, this.isListenerState = true});
+  
+
+ final  String title;
+ final  String message;
+@override final  MonthData data;
+@JsonKey() final  bool shouldPopOut;
+@override@JsonKey() final  bool isListenerState;
+
+/// Create a copy of MonthState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$MonthStateDisplayAlertCopyWith<MonthStateDisplayAlert> get copyWith => _$MonthStateDisplayAlertCopyWithImpl<MonthStateDisplayAlert>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MonthStateDisplayAlert&&(identical(other.title, title) || other.title == title)&&(identical(other.message, message) || other.message == message)&&(identical(other.data, data) || other.data == data)&&(identical(other.shouldPopOut, shouldPopOut) || other.shouldPopOut == shouldPopOut)&&(identical(other.isListenerState, isListenerState) || other.isListenerState == isListenerState));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,title,message,data,shouldPopOut,isListenerState);
+
+@override
+String toString() {
+  return 'MonthState.displayAlert(title: $title, message: $message, data: $data, shouldPopOut: $shouldPopOut, isListenerState: $isListenerState)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $MonthStateDisplayAlertCopyWith<$Res> implements $MonthStateCopyWith<$Res> {
+  factory $MonthStateDisplayAlertCopyWith(MonthStateDisplayAlert value, $Res Function(MonthStateDisplayAlert) _then) = _$MonthStateDisplayAlertCopyWithImpl;
+@override @useResult
+$Res call({
+ String title, String message, MonthData data, bool shouldPopOut, bool isListenerState
+});
+
+
+@override $MonthDataCopyWith<$Res> get data;
+
+}
+/// @nodoc
+class _$MonthStateDisplayAlertCopyWithImpl<$Res>
+    implements $MonthStateDisplayAlertCopyWith<$Res> {
+  _$MonthStateDisplayAlertCopyWithImpl(this._self, this._then);
+
+  final MonthStateDisplayAlert _self;
+  final $Res Function(MonthStateDisplayAlert) _then;
+
+/// Create a copy of MonthState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? message = null,Object? data = null,Object? shouldPopOut = null,Object? isListenerState = null,}) {
+  return _then(MonthStateDisplayAlert(
+title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as MonthData,shouldPopOut: null == shouldPopOut ? _self.shouldPopOut : shouldPopOut // ignore: cast_nullable_to_non_nullable
+as bool,isListenerState: null == isListenerState ? _self.isListenerState : isListenerState // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+/// Create a copy of MonthState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MonthDataCopyWith<$Res> get data {
+  
+  return $MonthDataCopyWith<$Res>(_self.data, (value) {
+    return _then(_self.copyWith(data: value));
+  });
+}
+}
 
 // dart format on

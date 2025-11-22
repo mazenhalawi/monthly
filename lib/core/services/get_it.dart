@@ -6,7 +6,9 @@ GetIt getIt = GetIt.instance;
 
 void setupGetIt() {
   // blocs
-  getIt.registerFactory<MonthBloc>(() => MonthBloc());
+  getIt.registerFactory<MonthBloc>(
+    () => MonthBloc(engine: getIt<MonthEngine>()),
+  );
 
   // services
   getIt.registerLazySingleton<MonthEngine>(() => MonthEngine());
