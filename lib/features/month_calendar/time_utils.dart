@@ -36,11 +36,21 @@ class TimeUtils {
     return DateTime(year, month).weekday - 1;
   }
 
+  // gets the list of day numbers from the previous month to fill the offset
   static List<int> daysOffSetsPreviousMonth({
     required int previousMonthDays,
     required int dayOffSet,
   }) {
-    var offsets = <int>[];
+    final prevMonthDays = List.generate(
+      previousMonthDays,
+      (index) => index + 1,
+    );
+
+    final offset_ = prevMonthDays.reversed.take(dayOffSet).toList();
+
+    return offset_;
+
+    /* var offsets = <int>[];
     var counter = dayOffSet;
     var previousDays = previousMonthDays;
 
@@ -50,7 +60,7 @@ class TimeUtils {
       counter--;
     }
 
-    return offsets.reversed.toList();
+    return offsets.reversed.toList(); */
   }
 
   static int nextMonth({required int month}) {
