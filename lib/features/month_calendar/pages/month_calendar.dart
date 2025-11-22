@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_recruitment_test/core/utils/colors.dart';
 import 'package:mobile_recruitment_test/core/services/month_engine.dart';
+import 'package:mobile_recruitment_test/core/utils/styles.dart';
 import 'package:mobile_recruitment_test/features/month_calendar/models/month_engine_data.dart';
 import 'package:mobile_recruitment_test/core/widgets/text.dart';
 import 'package:mobile_recruitment_test/core/utils/translations.dart';
@@ -93,6 +94,30 @@ class _MonthCalendarState extends State<MonthCalendar> {
                                       : null,
                             ),
                           ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              width: 100,
+                              child: ElevatedButton(
+                                onPressed: () => print('pressed previous'),
+                                style: LButtonStyle,
+                                child: Text("Button"),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 100,
+                              child: ElevatedButton(
+                                onPressed: () => print('pressed next'),
+                                style: LButtonStyle,
+                                child: Text("Next"),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
