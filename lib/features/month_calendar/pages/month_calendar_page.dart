@@ -175,7 +175,13 @@ extension StateWidgets on MonthCalendarPage {
                               Translations.monthsMap[data
                                   .selectedPeriod
                                   .month]!,
-                          type: LTextType.medium,
+                          type: LTextType.large,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        SizedBox(width: 8),
+                        LText(
+                          text: data.selectedPeriod.year.toString(),
+                          type: LTextType.large,
                           fontWeight: FontWeight.bold,
                         ),
                         SizedBox(width: 8),

@@ -3,7 +3,8 @@ import 'package:mobile_recruitment_test/core/utils/colors.dart';
 
 enum LTextType {
   small(12),
-  medium(16);
+  medium(16),
+  large(22);
 
   const LTextType(this.font);
   final double font;
