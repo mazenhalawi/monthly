@@ -19,6 +19,12 @@ class MonthEngine {
     _cell++;
   }
 
+  void _resetPositionCounters() {
+    _row = 0;
+    _column = 0;
+    _cell = 0;
+  }
+
   void _feedOutput({
     required int day,
     required int month,
@@ -143,8 +149,9 @@ class MonthEngine {
   }
 
   // receives DateTime.now()
-  CellInfoMapper getMonth(DateTime date) {
+  CellInfoMapper getMonthCalendar(DateTime date) {
     final CellInfoMapper month = {};
+    _resetPositionCounters();
     _insertPrevDaysOffset(date: date, month: month);
     _insertCurrentMonthDays(date: date, month: month);
     _insertNextDaysOffset(date: date, month: month);

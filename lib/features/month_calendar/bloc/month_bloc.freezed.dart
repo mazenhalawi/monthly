@@ -55,11 +55,13 @@ extension MonthEventPatterns on MonthEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( MonthEventGetMonth value)?  getMonth,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( MonthEventGetMonthCalendar value)?  getMonthCalendar,TResult Function( MonthEventGetNextMonthCalendar value)?  gotoNextMonth,TResult Function( MonthEventGetPreviousMonthCalendar value)?  gotoPreviousMonth,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case MonthEventGetMonth() when getMonth != null:
-return getMonth(_that);case _:
+case MonthEventGetMonthCalendar() when getMonthCalendar != null:
+return getMonthCalendar(_that);case MonthEventGetNextMonthCalendar() when gotoNextMonth != null:
+return gotoNextMonth(_that);case MonthEventGetPreviousMonthCalendar() when gotoPreviousMonth != null:
+return gotoPreviousMonth(_that);case _:
   return orElse();
 
 }
@@ -77,11 +79,13 @@ return getMonth(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( MonthEventGetMonth value)  getMonth,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( MonthEventGetMonthCalendar value)  getMonthCalendar,required TResult Function( MonthEventGetNextMonthCalendar value)  gotoNextMonth,required TResult Function( MonthEventGetPreviousMonthCalendar value)  gotoPreviousMonth,}){
 final _that = this;
 switch (_that) {
-case MonthEventGetMonth():
-return getMonth(_that);case _:
+case MonthEventGetMonthCalendar():
+return getMonthCalendar(_that);case MonthEventGetNextMonthCalendar():
+return gotoNextMonth(_that);case MonthEventGetPreviousMonthCalendar():
+return gotoPreviousMonth(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -98,11 +102,13 @@ return getMonth(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( MonthEventGetMonth value)?  getMonth,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( MonthEventGetMonthCalendar value)?  getMonthCalendar,TResult? Function( MonthEventGetNextMonthCalendar value)?  gotoNextMonth,TResult? Function( MonthEventGetPreviousMonthCalendar value)?  gotoPreviousMonth,}){
 final _that = this;
 switch (_that) {
-case MonthEventGetMonth() when getMonth != null:
-return getMonth(_that);case _:
+case MonthEventGetMonthCalendar() when getMonthCalendar != null:
+return getMonthCalendar(_that);case MonthEventGetNextMonthCalendar() when gotoNextMonth != null:
+return gotoNextMonth(_that);case MonthEventGetPreviousMonthCalendar() when gotoPreviousMonth != null:
+return gotoPreviousMonth(_that);case _:
   return null;
 
 }
@@ -119,10 +125,12 @@ return getMonth(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  getMonth,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  getMonthCalendar,TResult Function()?  gotoNextMonth,TResult Function()?  gotoPreviousMonth,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case MonthEventGetMonth() when getMonth != null:
-return getMonth();case _:
+case MonthEventGetMonthCalendar() when getMonthCalendar != null:
+return getMonthCalendar();case MonthEventGetNextMonthCalendar() when gotoNextMonth != null:
+return gotoNextMonth();case MonthEventGetPreviousMonthCalendar() when gotoPreviousMonth != null:
+return gotoPreviousMonth();case _:
   return orElse();
 
 }
@@ -140,10 +148,12 @@ return getMonth();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  getMonth,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  getMonthCalendar,required TResult Function()  gotoNextMonth,required TResult Function()  gotoPreviousMonth,}) {final _that = this;
 switch (_that) {
-case MonthEventGetMonth():
-return getMonth();case _:
+case MonthEventGetMonthCalendar():
+return getMonthCalendar();case MonthEventGetNextMonthCalendar():
+return gotoNextMonth();case MonthEventGetPreviousMonthCalendar():
+return gotoPreviousMonth();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -160,10 +170,12 @@ return getMonth();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  getMonth,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  getMonthCalendar,TResult? Function()?  gotoNextMonth,TResult? Function()?  gotoPreviousMonth,}) {final _that = this;
 switch (_that) {
-case MonthEventGetMonth() when getMonth != null:
-return getMonth();case _:
+case MonthEventGetMonthCalendar() when getMonthCalendar != null:
+return getMonthCalendar();case MonthEventGetNextMonthCalendar() when gotoNextMonth != null:
+return gotoNextMonth();case MonthEventGetPreviousMonthCalendar() when gotoPreviousMonth != null:
+return gotoPreviousMonth();case _:
   return null;
 
 }
@@ -174,8 +186,8 @@ return getMonth();case _:
 /// @nodoc
 
 
-class MonthEventGetMonth implements MonthEvent {
-  const MonthEventGetMonth();
+class MonthEventGetMonthCalendar implements MonthEvent {
+  const MonthEventGetMonthCalendar();
   
 
 
@@ -185,7 +197,7 @@ class MonthEventGetMonth implements MonthEvent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MonthEventGetMonth);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MonthEventGetMonthCalendar);
 }
 
 
@@ -194,7 +206,71 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'MonthEvent.getMonth()';
+  return 'MonthEvent.getMonthCalendar()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class MonthEventGetNextMonthCalendar implements MonthEvent {
+  const MonthEventGetNextMonthCalendar();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MonthEventGetNextMonthCalendar);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'MonthEvent.gotoNextMonth()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class MonthEventGetPreviousMonthCalendar implements MonthEvent {
+  const MonthEventGetPreviousMonthCalendar();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MonthEventGetPreviousMonthCalendar);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'MonthEvent.gotoPreviousMonth()';
 }
 
 

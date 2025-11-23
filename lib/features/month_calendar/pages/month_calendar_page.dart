@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_recruitment_test/core/errors/failure.dart';
@@ -14,8 +12,8 @@ import 'package:mobile_recruitment_test/core/widgets/text.dart';
 import 'package:mobile_recruitment_test/core/utils/translations.dart';
 
 /// Main calendar widget that displays a monthly calendar view.
-class MonthCalendar extends StatelessWidget {
-  const MonthCalendar({super.key});
+class MonthCalendarPage extends StatelessWidget {
+  const MonthCalendarPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -67,9 +65,9 @@ class MonthCalendar extends StatelessWidget {
   }
 }
 
-extension StateWidgets on MonthCalendar {
+extension StateWidgets on MonthCalendarPage {
   Widget _getInitialState(BuildContext context) {
-    context.read<MonthBloc>().add(MonthEvent.getMonth());
+    context.read<MonthBloc>().add(MonthEvent.getMonthCalendar());
     return Container();
   }
 
@@ -132,7 +130,8 @@ extension StateWidgets on MonthCalendar {
                         width: 50.0,
                         height: 80.0,
                         child:
-                            data.month[rowIndex]![columnIdx]!.isFromThisScope
+                            data.month[rowIndex]?[columnIdx]?.isFromThisScope ??
+                                    false
                                 ? Container(
                                   alignment: Alignment.topCenter,
                                   color: LColors.shade1,
@@ -160,17 +159,23 @@ extension StateWidgets on MonthCalendar {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                        width: 100,
+                        width: 110,
                         child: ElevatedButton(
-                          onPressed: () => log('pressed previous'),
+                          onPressed:
+                              () => context.read<MonthBloc>().add(
+                                MonthEvent.gotoPreviousMonth(),
+                              ),
                           style: LButtonStyle,
-                          child: Text("Button"),
+                          child: Text("Previous"),
                         ),
                       ),
                       SizedBox(
-                        width: 100,
+                        width: 110,
                         child: ElevatedButton(
-                          onPressed: () => log('pressed next'),
+                          onPressed:
+                              () => context.read<MonthBloc>().add(
+                                MonthEvent.gotoNextMonth(),
+                              ),
                           style: LButtonStyle,
                           child: Text("Next"),
                         ),
