@@ -8,4 +8,6 @@ class MonthEvent with _$MonthEvent {
 
   const factory MonthEvent.gotoPreviousMonth() =
       MonthEventGetPreviousMonthCalendar;
+
+  const factory MonthEvent.setDate(DateTime date) = MonthEventSetDate;
 }

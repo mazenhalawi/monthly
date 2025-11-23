@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_recruitment_test/core/errors/failure.dart';
@@ -99,10 +100,88 @@ extension StateWidgets on MonthCalendarPage {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20),
-                  child: LText(
-                    text: Translations.monthsMap[data.selectedPeriod.month]!,
-                    type: LTextType.medium,
-                    fontWeight: FontWeight.bold,
+                  child: GestureDetector(
+                    onTap: () {
+                      DateTime? selectedDate;
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) {
+                          return SizedBox(
+                            height: 300,
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 12,
+                                    vertical: 20,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      TextButton(
+                                        onPressed:
+                                            () => Navigator.of(
+                                              context,
+                                            ).pop(false),
+                                        child: Text("Cancel"),
+                                      ),
+                                      TextButton(
+                                        onPressed:
+                                            () =>
+                                                Navigator.of(context).pop(true),
+                                        child: Text("Submit"),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 200,
+                                  child: CupertinoDatePicker(
+                                    mode: CupertinoDatePickerMode.monthYear,
+                                    initialDateTime: DateTime(
+                                      data.selectedPeriod.year,
+                                      data.selectedPeriod.month,
+                                    ),
+                                    minimumYear: 1900,
+                                    maximumYear: 2100,
+                                    onDateTimeChanged: (DateTime newDateTime) {
+                                      selectedDate = newDateTime;
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ).then((shouldSubmit) {
+                        if (context.mounted &&
+                            shouldSubmit == true &&
+                            selectedDate != null) {
+                          context.read<MonthBloc>()
+                            ..add(MonthEvent.setDate(selectedDate!))
+                            ..add(MonthEvent.getMonthCalendar());
+                        }
+                        print(
+                          'selectedDate: ${selectedDate?.toIso8601String()}',
+                        );
+                      });
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        LText(
+                          text:
+                              Translations.monthsMap[data
+                                  .selectedPeriod
+                                  .month]!,
+                          type: LTextType.medium,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        SizedBox(width: 8),
+                        Icon(Icons.edit, size: 16, color: LColors.brand),
+                      ],
+                    ),
                   ),
                 ),
                 Row(

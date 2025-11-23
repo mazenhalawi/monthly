@@ -21,12 +21,21 @@ class MonthBloc extends Bloc<MonthEvent, MonthState> {
         getMonthCalendar: () => _mapGetMonthCalendarEventToState(event, emit),
         gotoNextMonth: () => _mapGotoNextMonthEventToState(event, emit),
         gotoPreviousMonth: () => _mapGotoPreviousMonthEventToState(event, emit),
+        setDate:
+            (_) => _mapSetDateEventToState(event as MonthEventSetDate, emit),
       );
     });
   }
 }
 
 extension MapEventToStates on MonthBloc {
+  Future<void> _mapSetDateEventToState(
+    MonthEventSetDate event,
+    Emitter<MonthState> emit,
+  ) async {
+    emit(state.copyWith(data: state.data.copyWith(selectedPeriod: event.date)));
+  }
+
   Future<void> _mapGotoPreviousMonthEventToState(
     MonthEvent event,
     Emitter<MonthState> emit,

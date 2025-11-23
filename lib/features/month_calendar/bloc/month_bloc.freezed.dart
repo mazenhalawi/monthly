@@ -55,13 +55,14 @@ extension MonthEventPatterns on MonthEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( MonthEventGetMonthCalendar value)?  getMonthCalendar,TResult Function( MonthEventGetNextMonthCalendar value)?  gotoNextMonth,TResult Function( MonthEventGetPreviousMonthCalendar value)?  gotoPreviousMonth,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( MonthEventGetMonthCalendar value)?  getMonthCalendar,TResult Function( MonthEventGetNextMonthCalendar value)?  gotoNextMonth,TResult Function( MonthEventGetPreviousMonthCalendar value)?  gotoPreviousMonth,TResult Function( MonthEventSetDate value)?  setDate,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case MonthEventGetMonthCalendar() when getMonthCalendar != null:
 return getMonthCalendar(_that);case MonthEventGetNextMonthCalendar() when gotoNextMonth != null:
 return gotoNextMonth(_that);case MonthEventGetPreviousMonthCalendar() when gotoPreviousMonth != null:
-return gotoPreviousMonth(_that);case _:
+return gotoPreviousMonth(_that);case MonthEventSetDate() when setDate != null:
+return setDate(_that);case _:
   return orElse();
 
 }
@@ -79,13 +80,14 @@ return gotoPreviousMonth(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( MonthEventGetMonthCalendar value)  getMonthCalendar,required TResult Function( MonthEventGetNextMonthCalendar value)  gotoNextMonth,required TResult Function( MonthEventGetPreviousMonthCalendar value)  gotoPreviousMonth,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( MonthEventGetMonthCalendar value)  getMonthCalendar,required TResult Function( MonthEventGetNextMonthCalendar value)  gotoNextMonth,required TResult Function( MonthEventGetPreviousMonthCalendar value)  gotoPreviousMonth,required TResult Function( MonthEventSetDate value)  setDate,}){
 final _that = this;
 switch (_that) {
 case MonthEventGetMonthCalendar():
 return getMonthCalendar(_that);case MonthEventGetNextMonthCalendar():
 return gotoNextMonth(_that);case MonthEventGetPreviousMonthCalendar():
-return gotoPreviousMonth(_that);case _:
+return gotoPreviousMonth(_that);case MonthEventSetDate():
+return setDate(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -102,13 +104,14 @@ return gotoPreviousMonth(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( MonthEventGetMonthCalendar value)?  getMonthCalendar,TResult? Function( MonthEventGetNextMonthCalendar value)?  gotoNextMonth,TResult? Function( MonthEventGetPreviousMonthCalendar value)?  gotoPreviousMonth,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( MonthEventGetMonthCalendar value)?  getMonthCalendar,TResult? Function( MonthEventGetNextMonthCalendar value)?  gotoNextMonth,TResult? Function( MonthEventGetPreviousMonthCalendar value)?  gotoPreviousMonth,TResult? Function( MonthEventSetDate value)?  setDate,}){
 final _that = this;
 switch (_that) {
 case MonthEventGetMonthCalendar() when getMonthCalendar != null:
 return getMonthCalendar(_that);case MonthEventGetNextMonthCalendar() when gotoNextMonth != null:
 return gotoNextMonth(_that);case MonthEventGetPreviousMonthCalendar() when gotoPreviousMonth != null:
-return gotoPreviousMonth(_that);case _:
+return gotoPreviousMonth(_that);case MonthEventSetDate() when setDate != null:
+return setDate(_that);case _:
   return null;
 
 }
@@ -125,12 +128,13 @@ return gotoPreviousMonth(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  getMonthCalendar,TResult Function()?  gotoNextMonth,TResult Function()?  gotoPreviousMonth,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  getMonthCalendar,TResult Function()?  gotoNextMonth,TResult Function()?  gotoPreviousMonth,TResult Function( DateTime date)?  setDate,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case MonthEventGetMonthCalendar() when getMonthCalendar != null:
 return getMonthCalendar();case MonthEventGetNextMonthCalendar() when gotoNextMonth != null:
 return gotoNextMonth();case MonthEventGetPreviousMonthCalendar() when gotoPreviousMonth != null:
-return gotoPreviousMonth();case _:
+return gotoPreviousMonth();case MonthEventSetDate() when setDate != null:
+return setDate(_that.date);case _:
   return orElse();
 
 }
@@ -148,12 +152,13 @@ return gotoPreviousMonth();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  getMonthCalendar,required TResult Function()  gotoNextMonth,required TResult Function()  gotoPreviousMonth,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  getMonthCalendar,required TResult Function()  gotoNextMonth,required TResult Function()  gotoPreviousMonth,required TResult Function( DateTime date)  setDate,}) {final _that = this;
 switch (_that) {
 case MonthEventGetMonthCalendar():
 return getMonthCalendar();case MonthEventGetNextMonthCalendar():
 return gotoNextMonth();case MonthEventGetPreviousMonthCalendar():
-return gotoPreviousMonth();case _:
+return gotoPreviousMonth();case MonthEventSetDate():
+return setDate(_that.date);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -170,12 +175,13 @@ return gotoPreviousMonth();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  getMonthCalendar,TResult? Function()?  gotoNextMonth,TResult? Function()?  gotoPreviousMonth,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  getMonthCalendar,TResult? Function()?  gotoNextMonth,TResult? Function()?  gotoPreviousMonth,TResult? Function( DateTime date)?  setDate,}) {final _that = this;
 switch (_that) {
 case MonthEventGetMonthCalendar() when getMonthCalendar != null:
 return getMonthCalendar();case MonthEventGetNextMonthCalendar() when gotoNextMonth != null:
 return gotoNextMonth();case MonthEventGetPreviousMonthCalendar() when gotoPreviousMonth != null:
-return gotoPreviousMonth();case _:
+return gotoPreviousMonth();case MonthEventSetDate() when setDate != null:
+return setDate(_that.date);case _:
   return null;
 
 }
@@ -278,6 +284,72 @@ String toString() {
 
 
 
+
+/// @nodoc
+
+
+class MonthEventSetDate implements MonthEvent {
+  const MonthEventSetDate(this.date);
+  
+
+ final  DateTime date;
+
+/// Create a copy of MonthEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$MonthEventSetDateCopyWith<MonthEventSetDate> get copyWith => _$MonthEventSetDateCopyWithImpl<MonthEventSetDate>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MonthEventSetDate&&(identical(other.date, date) || other.date == date));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,date);
+
+@override
+String toString() {
+  return 'MonthEvent.setDate(date: $date)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $MonthEventSetDateCopyWith<$Res> implements $MonthEventCopyWith<$Res> {
+  factory $MonthEventSetDateCopyWith(MonthEventSetDate value, $Res Function(MonthEventSetDate) _then) = _$MonthEventSetDateCopyWithImpl;
+@useResult
+$Res call({
+ DateTime date
+});
+
+
+
+
+}
+/// @nodoc
+class _$MonthEventSetDateCopyWithImpl<$Res>
+    implements $MonthEventSetDateCopyWith<$Res> {
+  _$MonthEventSetDateCopyWithImpl(this._self, this._then);
+
+  final MonthEventSetDate _self;
+  final $Res Function(MonthEventSetDate) _then;
+
+/// Create a copy of MonthEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? date = null,}) {
+  return _then(MonthEventSetDate(
+null == date ? _self.date : date // ignore: cast_nullable_to_non_nullable
+as DateTime,
+  ));
+}
+
+
+}
 
 /// @nodoc
 mixin _$MonthState {
