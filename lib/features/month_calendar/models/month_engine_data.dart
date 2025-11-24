@@ -1,4 +1,6 @@
 // ignore_for_file: unintended_html_in_doc_comment
+import 'package:equatable/equatable.dart';
+
 /// Constants for the month calendar grid dimensions.
 
 class KMonthEngine {
@@ -20,7 +22,7 @@ class KMonthEngine {
 typedef CellInfoMapper = Map<int, Map<int, MonthCellInfo>>;
 
 /// Data model representing a single cell in the calendar grid.
-class MonthCellInfo {
+class MonthCellInfo implements Equatable {
   final int day;
   final int month;
   final int year;
@@ -40,4 +42,19 @@ class MonthCellInfo {
     required this.column,
     required this.isToday,
   });
+
+  @override
+  List<Object?> get props => [
+    day,
+    month,
+    year,
+    isFromThisScope,
+    cell,
+    row,
+    column,
+    isToday,
+  ];
+
+  @override
+  bool? get stringify => true;
 }

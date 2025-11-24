@@ -42,16 +42,14 @@ extension MapEventToStates on MonthBloc {
   ) async {
     emit(MonthState.loading(data: state.data));
 
-    final previousMonth = TimeUtils.previousMonth(
-      month: state.data.selectedPeriod.month,
+    final previousMonth = TimeUtils.getPreviousMonth(
+      currentMonth: state.data.selectedPeriod.month,
     );
-    final previousMonthDate = DateTime(
-      TimeUtils.previousMonthYear(
-        month: previousMonth,
-        year: state.data.selectedPeriod.year,
-      ),
-      previousMonth,
+    final previousMonthYear = TimeUtils.getPreviousMonthYear(
+      currentMonth: state.data.selectedPeriod.month,
+      currentYear: state.data.selectedPeriod.year,
     );
+    final previousMonthDate = DateTime(previousMonthYear, previousMonth);
 
     final monthData = engine.getMonthCalendar(previousMonthDate);
 
@@ -71,16 +69,16 @@ extension MapEventToStates on MonthBloc {
   ) async {
     emit(MonthState.loading(data: state.data));
 
-    final nextMonth = TimeUtils.nextMonth(
-      month: state.data.selectedPeriod.month,
+    final nextMonth = TimeUtils.getNextMonth(
+      currentMonth: state.data.selectedPeriod.month,
     );
-    final nextMonthDate = DateTime(
-      TimeUtils.nextMonthYear(
-        month: nextMonth,
-        year: state.data.selectedPeriod.year,
-      ),
-      nextMonth,
+
+    final nextMonthYear = TimeUtils.getNextMonthYear(
+      currentMonth: state.data.selectedPeriod.month,
+      currentYear: state.data.selectedPeriod.year,
     );
+
+    final nextMonthDate = DateTime(nextMonthYear, nextMonth);
 
     final monthData = engine.getMonthCalendar(nextMonthDate);
 

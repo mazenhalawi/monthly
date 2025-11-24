@@ -70,16 +70,18 @@ class MonthEngine {
     // daysOffset > 0 means the month does not start on Monday
     // get the previous month days to fill the offset
     if (daysOffset > 0) {
-      final previousMonthNumber = TimeUtils.previousMonth(month: date.month);
-
-      final previousMonthYear = TimeUtils.previousMonthYear(
-        year: date.year,
-        month: date.month,
+      final previousMonthNumber = TimeUtils.getPreviousMonth(
+        currentMonth: date.month,
       );
 
-      final previousMonthDays = TimeUtils.previousMonthDays(
-        year: previousMonthYear,
-        month: previousMonthNumber,
+      final previousMonthYear = TimeUtils.getPreviousMonthYear(
+        currentYear: date.year,
+        currentMonth: date.month,
+      );
+
+      final previousMonthDays = TimeUtils.getPreviousMonthDays(
+        previousYear: previousMonthYear,
+        previousMonth: previousMonthNumber,
       );
 
       final daysOffsetsPreviousMonth = TimeUtils.daysOffSetsPreviousMonth(
@@ -129,13 +131,14 @@ class MonthEngine {
     required DateTime date,
     required CellInfoMapper month,
   }) {
-    final nextMonthNumber = TimeUtils.nextMonth(month: date.month);
-    final nextMonthYear = TimeUtils.nextMonthYear(
-      year: date.year,
-      month: date.month,
+    final nextMonthNumber = TimeUtils.getNextMonth(currentMonth: date.month);
+    final nextMonthYear = TimeUtils.getNextMonthYear(
+      currentYear: date.year,
+      currentMonth: date.month,
     );
     final rest = 42 - _cell;
-    for (var d = 0; d <= rest; d++) {
+    // changed <= to < fix because it gave 43 days instead of 42
+    for (var d = 0; d < rest; d++) {
       final day = d + 1;
       _feedOutput(
         day: day,
@@ -151,7 +154,10 @@ class MonthEngine {
   // receives DateTime.now()
   CellInfoMapper getMonthCalendar(DateTime date) {
     final CellInfoMapper month = {};
+    // added reset of counters otherwise the number of rows
+    // will increase each time the function is called
     _resetPositionCounters();
+
     _insertPrevDaysOffset(date: date, month: month);
     _insertCurrentMonthDays(date: date, month: month);
     _insertNextDaysOffset(date: date, month: month);

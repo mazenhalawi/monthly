@@ -11,22 +11,28 @@ class TimeUtils {
         now.year == date.year;
   }
 
-  static int previousMonth({required int month}) {
-    return month == 1 ? 12 : month - 1;
+  static int getPreviousMonth({required int currentMonth}) {
+    return currentMonth == 1 ? 12 : currentMonth - 1;
   }
 
-  static int previousMonthDays({required int year, required int month}) {
-    var year_ = year;
-    var month_ = month;
-    if (month == 1) {
+  static int getPreviousMonthDays({
+    required int previousMonth,
+    required int previousYear,
+  }) {
+    var year_ = previousYear;
+    var month_ = previousMonth;
+    if (previousMonth == 1) {
       year_--;
       month_ = 12;
     }
     return DateUtils.getDaysInMonth(year_, month_);
   }
 
-  static int previousMonthYear({required int month, required int year}) {
-    return month == 1 ? year - 1 : year;
+  static int getPreviousMonthYear({
+    required int currentMonth,
+    required int currentYear,
+  }) {
+    return currentMonth == 1 ? currentYear - 1 : currentYear;
   }
 
   static int daysOffsetPreviousMonthQuantity({
@@ -46,7 +52,7 @@ class TimeUtils {
       (index) => index + 1,
     );
 
-    final offset_ = prevMonthDays.reversed.take(dayOffSet).toList();
+    final offset_ = prevMonthDays.reversed.take(dayOffSet).toList().reversed.toList();
 
     return offset_;
 
@@ -63,12 +69,15 @@ class TimeUtils {
     return offsets.reversed.toList(); */
   }
 
-  static int nextMonth({required int month}) {
-    return month == 12 ? 1 : month + 1;
+  static int getNextMonth({required int currentMonth}) {
+    return currentMonth == 12 ? 1 : currentMonth + 1;
   }
 
-  static int nextMonthYear({required int month, required int year}) {
-    return month == 12 ? year + 1 : year;
+  static int getNextMonthYear({
+    required int currentMonth,
+    required int currentYear,
+  }) {
+    return currentMonth == 12 ? currentYear + 1 : currentYear;
   }
 
   static int getDaysInMonth({required int year, required int month}) {
