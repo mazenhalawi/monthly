@@ -163,4 +163,31 @@ class MonthEngine {
     _insertNextDaysOffset(date: date, month: month);
     return month;
   }
+
+  // Alternative implementation of getMonthCalendar
+  /* CellInfoMapper getMonthCalendar(DateTime date) {
+    final CellInfoMapper month = {};
+
+    _resetPositionCounters();
+
+    DateTime firstDate = DateTime(date.year, date.month, 1);
+    final weekDay = firstDate.weekday;
+    if (weekDay > 1) {
+      firstDate = firstDate.subtract(Duration(days: weekDay - 1));
+    }
+
+    for (var i = 0; i < 42; i++) {
+      final currentDate = firstDate.add(Duration(days: i));
+      _feedOutput(
+        day: currentDate.day,
+        month: currentDate.month,
+        year: currentDate.year,
+        isFromThisScope: currentDate.month == date.month,
+        output: month,
+      );
+      _moveToNextPositon();
+    }
+
+    return month;
+  } */
 }
