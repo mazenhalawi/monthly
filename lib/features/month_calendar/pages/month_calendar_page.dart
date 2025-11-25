@@ -228,7 +228,7 @@ extension StateWidgets on MonthCalendarPage {
             fontWeight: FontWeight.bold,
           ),
           SizedBox(width: 8),
-          Icon(Icons.edit, size: 16, color: LColors.brand),
+          Icon(Icons.edit, size: 20, fontWeight: FontWeight.bold),
         ],
       ),
     );
